@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "跟读练习本 · YouTube Shadowing",
+  "version": "1.0.0",
+  "description": "用 YouTube 英文字幕逐句听原声、慢速循环、录音跟读和回听。支持 SRT / VTT 字幕导入。",
+  "minimum_chrome_version": "111",
+  "permissions": ["storage"],
+  "action": { "default_title": "打开 / 收起跟读练习本" },
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["bridge.js"],
+      "world": "MAIN",
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["core.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    { "resources": ["panel.css", "help.html", "help.css"], "matches": ["https://www.youtube.com/*"] }
+  ]
+}

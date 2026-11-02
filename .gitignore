@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+Thumbs.db
+*.zip
+*.log
+.env
+.env.*
+!.env.example
+
+# Local browser sessions and one-off automation scripts
+tests/browser-context.json
+tests/browser-round-*.mjs
